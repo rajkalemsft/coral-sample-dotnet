@@ -6,5 +6,10 @@ deployments:
     target: development
     clusters: 1
     values:
-      image: myregistry.io/myimage:tag
+      fqdn: forex-dev.contoso.com
+      image: ghcr.io/rajkalemsft/coral-sample-dotnet:main
+      healthEndpoint: /healthz
       port: 5000
+      cpu: 1
+      memory: 256M
+      replicas: 1
