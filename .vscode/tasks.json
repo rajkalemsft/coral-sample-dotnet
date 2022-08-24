@@ -1,0 +1,84 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+      {
+        "label": "build",
+        "command": "dotnet",
+        "type": "process",
+        "group": {
+          "kind": "build",
+          "isDefault": true
+        },
+        "args": [
+          "build",
+          "${workspaceFolder}/src/App/App.csproj",
+          "/property:GenerateFullPaths=true",
+          "/consoleloggerparameters:NoSummary"
+        ],
+        "problemMatcher": "$msCompile"
+      },
+      {
+        "label": "run",
+        "command": "dotnet",
+        "type": "process",
+        "args": [
+          "watch",
+          "run",
+          "--project",
+          "${workspaceFolder}/src/App/App.csproj",
+          "/property:GenerateFullPaths=true",
+          "/consoleloggerparameters:NoSummary"
+        ],
+        "problemMatcher": "$msCompile"
+      },
+      {
+        "label": "test",
+        "command": "dotnet",
+        "type": "process",
+        "args": [
+          "test"
+        ],
+        "problemMatcher": "$msCompile"
+      },
+      {
+        "label": "run in local cluster",
+        "type": "shell",
+        "command": ".devcontainer/scripts/cluster-runApp.sh",
+        "problemMatcher": [],
+        "presentation": {
+          "echo": true,
+          "reveal": "always",
+          "focus": true,
+          "panel": "shared",
+          "showReuseMessage": true,
+          "clear": true
+        }
+      },
+      {
+        "label": "reset local cluster",
+        "type": "shell",
+        "command": ".devcontainer/scripts/cluster-reset.sh",
+        "problemMatcher": [],
+        "presentation": {
+          "echo": true,
+          "reveal": "always",
+          "focus": true,
+          "panel": "shared",
+          "showReuseMessage": true,
+          "clear": true
+        }
+      },
+      {
+        "label": "launch App in New Tab",
+        "type": "shell",
+        "command": "$BROWSER 'https://${env:CODESPACE_NAME}-8081.githubpreview.dev/'",
+        "problemMatcher": [],
+      },
+      {
+        "label": "Launch Platform Portal in New Tab",
+        "type": "shell",
+        "command": "$BROWSER 'https://${env:CODESPACE_NAME}-8081.githubpreview.dev/.platform'",
+        "problemMatcher": [],
+      }
+    ]
+}
